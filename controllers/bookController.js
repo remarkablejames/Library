@@ -1,90 +1,58 @@
 const Book = require("../models/BookModel");
 
-exports.createBook = async (req, res) => {
-  try {
-    const newBook = await Book.create(req.body);
-    res.status(201).json({
-      status: "success",
-      data: {
-        book: newBook,
-      },
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "fail",
-      message: err,
-    });
-  }
-};
+const AppError = require("../utilities/AppError");
+const catchAsync = require("../utilities/catchAsync");
 
-exports.getAllBooks = async (req, res) => {
-  try {
-    const books = await Book.find();
-    res.status(200).json({
-      status: "success",
-      results: books.length,
-      data: {
-        books,
-      },
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: "fail",
-      message: err,
-    });
-  }
-};
+exports.createBook = catchAsync(async (req, res) => {
+  const newBook = await Book.create(req.body);
+  res.status(201).json({
+    status: "success",
+    data: {
+      book: newBook,
+    },
+  });
+});
 
-exports.getBook = async (req, res) => {
-  try {
-    console.log(req.params.id);
-    const book = await Book.findById(req.params.id);
-    res.status(200).json({
-      status: "success",
-      data: {
-        book,
-      },
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: "fail",
-      message: err,
-    });
-  }
-};
+exports.getAllBooks = catchAsync(async (req, res) => {
+  const books = await Book.find();
+  res.status(200).json({
+    status: "success",
+    results: books.length,
+    data: {
+      books,
+    },
+  });
+});
 
-exports.updateBook = async (req, res) => {
-  console.log(req.body);
-  console.log(req.params.id);
-  try {
-    const newBook = await Book.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    res.status(200).json({
-      status: "success",
-      data: {
-        book: newBook,
-      },
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "fail",
-      message: err,
-    });
+exports.getBook = catchAsync(async (req, res, next) => {
+  const book = await Book.findById(req.params.id);
+  if (!book) {
+    next(new AppError("No book found with that ID", 404));
   }
-};
+  res.status(200).json({
+    status: "success",
+    data: {
+      book,
+    },
+  });
+});
 
-exports.deleteBook = async (req, res) => {
-  try {
-    await Book.findByIdAndDelete(req.params.id);
-    res.status(200).json({
-      status: "success",
-      message: "Book deleted successfully",
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "fail",
-      message: err,
-    });
-  }
-};
+exports.updateBook = catchAsync(async (req, res) => {
+  const newBook = await Book.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+  res.status(200).json({
+    status: "success",
+    data: {
+      book: newBook,
+    },
+  });
+});
+
+exports.deleteBook = catchAsync(async (req, res) => {
+  await Book.findByIdAndDelete(req.params.id);
+  res.status(200).json({
+    status: "success",
+    message: "Book deleted successfully",
+  });
+});
