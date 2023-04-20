@@ -1,12 +1,20 @@
-import express from "express";
+const express = require("express");
+const morgan = require("morgan");
 const app = express();
-import userRouter from "./routes/userRoutes.js";
+const userRouter = require("./routes/userRoutes");
 // GENERAL MIDDLEWARES
 app.use(express.json());
+// logger middleware
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 // ROUTES
 app.use("/api/v1/users", userRouter);
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+// ERROR HANDLING MIDDLEWARE
+app.use((err, req, res, next) => {
+  res.status(500).json({ message: err.message });
 });
+
+module.exports = app;
