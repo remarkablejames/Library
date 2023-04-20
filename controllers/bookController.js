@@ -27,7 +27,7 @@ exports.getAllBooks = catchAsync(async (req, res) => {
 exports.getBook = catchAsync(async (req, res, next) => {
   const book = await Book.findById(req.params.id);
   if (!book) {
-    next(new AppError("No book found with that ID", 404));
+    return next(new AppError("No book found with that ID", 404));
   }
   res.status(200).json({
     status: "success",
