@@ -1,0 +1,80 @@
+{
+    "books": [
+      {
+        "title": "The Hidden Path",
+        "author": "Sarah Turner",
+        "publisher": "Starlight Publications",
+        "price": 12.99,
+        "rating": 4.5,
+        "summary": "A gripping tale of mystery and adventure as a young girl uncovers a hidden path leading to a magical world."
+      },
+      {
+        "title": "Beyond the Stars",
+        "author": "Jason Matthews",
+        "publisher": "Moonbeam Books",
+        "price": 8.99,
+        "rating": 3.8,
+        "summary": "A thrilling sci-fi adventure where a group of astronauts embark on a dangerous mission to save humanity from an alien threat."
+      },
+      {
+        "title": "The Enchanted Forest",
+        "author": "Emily Thompson",
+        "publisher": "Enchanted Press",
+        "price": 14.95,
+        "rating": 4.2,
+        "summary": "A heartwarming tale of a young fairy who embarks on a journey to save her forest home from an evil sorcerer."
+      },
+      {
+        "title": "Lost in Time",
+        "author": "Michael Johnson",
+        "publisher": "Time Travel Books",
+        "price": 10.50,
+        "rating": 4.0,
+        "summary": "An intriguing time travel story where a young historian gets lost in time and must find a way back to his own era."
+      },
+      {
+        "title": "The Forgotten Kingdom",
+        "author": "Sophia Williams",
+        "publisher": "Royal Press",
+        "price": 16.99,
+        "rating": 4.8,
+        "summary": "A captivating fantasy novel about a young princess who must reclaim her lost kingdom and defeat an evil sorceress."
+      },
+      {
+        "title": "The Secret Code",
+        "author": "David Anderson",
+        "publisher": "Cipher Books",
+        "price": 9.99,
+        "rating": 3.5,
+        "summary": "A thrilling mystery where a young detective must crack a secret code to solve a series of baffling crimes."
+      },
+      {
+        "title": "The Lost World",
+        "author": "Alexandra Thompson",
+        "publisher": "Explorer Press",
+        "price": 12.75,
+        "rating": 4.3,
+        "summary": "An enthralling adventure as a group of explorers embark on a perilous journey to discover a lost world hidden deep in the Amazon rainforest."
+      },
+      {
+        "title": "Rise of the Dragons",
+        "author": "Benjamin Lee",
+        "publisher": "Dragonfire Publications",
+        "price": 11.99,
+        "rating": 4.6,
+        "summary": "An epic fantasy saga where dragons rise from the ashes of a fallen kingdom, and a young hero must rise to stop their reign of terror."
+      },
+      {
+        "title": "The Mysterious Island",
+        "author": "Olivia Robinson",
+        "publisher": "Adventurer Books",
+        "price": 13.50,
+        "rating": 4.1,
+        "summary": "A thrilling tale of survival as a group of castaways must unravel the mysteries of a deserted island and find a way back home."
+      },
+      {
+        "title": "The Last Hope",
+        "author": "Daniel White",
+        "publisher": "Hopeful Publishing",
+        "price": 15.
+  
