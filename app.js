@@ -31,14 +31,23 @@ app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
-// ERROR HANDLING MIDDLEWARE
+// GLOBAL ERROR HANDLING MIDDLEWARE
 app.use((err, req, res, next) => {
   const errorCode = err.statusCode || 500;
   const errorMessage = err.message || "Internal Server Error";
-  res.status(errorCode).json({
-    status: err.status,
-    message: errorMessage,
-  });
+
+  if (process.env.NODE_ENV === "development") {
+    res.status(errorCode).json({
+      status: err.status,
+      message: errorMessage,
+      stack: err.stack,
+    });
+  } else if (process.env.NODE_ENV === "production") {
+    res.status(errorCode).json({
+      status: err.status,
+      message: errorMessage,
+    });
+  }
 });
 
 module.exports = app;
