@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 // Connect to database
 
-mongoose.connect(process.env.DB_URL).then(() => {
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true }).then(() => {
   // eslint-disable-next-line no-console
   console.log("DB connection successful!");
 });
