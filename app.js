@@ -15,8 +15,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // ROUTES
-app.use("/api/v1/user", userRouter);
-app.use("/api/v1/book", bookRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/books", bookRouter);
 
 // 404 MIDDLEWARE
 app.all("*", (req, res, next) => {
@@ -48,6 +48,7 @@ app.use((err, req, res, next) => {
       message: errorMessage,
     });
   }
+  next();
 });
 
 module.exports = app;
