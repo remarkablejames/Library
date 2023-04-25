@@ -8,6 +8,7 @@ const AppError = require("../utilities/AppError");
 
 exports.signup = catchAsync(async (req, res, next) => {
   const { name, email, password, passwordConfirm } = req.body;
+  console.log(req.body);
   const newUser = await User.create({
     name,
     email,
